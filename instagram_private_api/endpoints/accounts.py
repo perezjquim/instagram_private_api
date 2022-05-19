@@ -25,8 +25,10 @@ class AccountsEndpointsMixin(object):
     def login(self):
         """Login."""
 
-        if not self.username or not self.password:
-            raise ClientLoginRequiredError('login_required', code=400)
+        # >>> JPEREZ - 19.05.2022 - session persistence fix
+        #if not self.username or not self.password:
+        #    raise ClientLoginRequiredError('login_required', code=400)
+        # <<< JPEREZ - 19.05.2022 - session persistence fix
 
         prelogin_params = self._call_api(
             'si/fetch_headers/',
