@@ -209,7 +209,10 @@ class Client(AccountsEndpointsMixin, DiscoverEndpointsMixin, FeedEndpointsMixin,
         if not cookie_string:   # [TODO] There's probably a better way than to depend on cookie_string
             if not self.username or not self.password:
                 raise ClientLoginRequiredError('login_required', code=400)
-            # if you get here, you have to call .login()
+            # >>> JPEREZ - 20.05.2022
+            ## if you get here, you have to call .login()
+            self.login( )
+            # <<< JPEREZ - 20.05.2022
 
         self.logger.debug('USERAGENT: {0!s}'.format(self.user_agent))
         super(Client, self).__init__()
